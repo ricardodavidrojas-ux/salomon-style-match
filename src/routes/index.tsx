@@ -3,8 +3,20 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import {
   Server, Network, Headset, ShieldCheck, KeyRound, Cpu, Code2, PhoneCall, Cctv,
   Award, Clock, MapPin, UserRound, Sparkles, Zap, Phone, Mail, CalendarClock,
-  MessageCircle, Menu, X, ArrowRight,
+  MessageCircle, Menu, X, ArrowRight, Building2, Factory, GraduationCap, Stethoscope, Calculator, Home,
 } from "lucide-react";
+import heroImg from "@/assets/hero.webp";
+import processImg from "@/assets/process.webp";
+import clientsImg from "@/assets/clients.webp";
+import s1 from "@/assets/s1.webp";
+import s2 from "@/assets/s2.webp";
+import s3 from "@/assets/s3.webp";
+import s4 from "@/assets/s4.webp";
+import s5 from "@/assets/s5.webp";
+import s6 from "@/assets/s6.webp";
+import s7 from "@/assets/s7.webp";
+import s8 from "@/assets/s8.webp";
+import s9 from "@/assets/s9.webp";
 
 const TITLE = "Salomon Tech | Soluciones IT, Redes y Soporte Técnico en Argentina";
 const DESC =
@@ -34,15 +46,24 @@ const nav = [
 ] as const;
 
 const services = [
-  [Server, "Infraestructura IT", "Servidores, cloud, virtualización y backups diseñados para crecer con tu negocio."],
-  [Network, "Redes y Conectividad", "LAN/WAN, Wi-Fi empresarial, VPN y cableado estructurado certificado."],
-  [Headset, "Soporte Técnico 24/7", "Mesa de ayuda, soporte remoto y presencial, con monitoreo proactivo."],
-  [ShieldCheck, "Ciberseguridad", "Antivirus corporativo, firewalls, respaldos y recuperación ante desastres."],
-  [KeyRound, "Licenciamiento de Software", "Microsoft 365, Windows Server y Google Workspace, siempre en regla."],
-  [Cpu, "Venta de Hardware e Insumos", "Equipos, componentes y periféricos con asesoramiento experto."],
-  [Code2, "Desarrollo Web y Software", "Sitios web, aplicaciones a medida e integración de ERP/CRM."],
-  [PhoneCall, "Telefonía IP / VoIP", "Centrales virtuales y comunicaciones unificadas para tu equipo."],
-  [Cctv, "Cámaras de Seguridad / CCTV", "Videovigilancia IP con monitoreo remoto desde cualquier lugar."],
+  [Server, "Infraestructura IT", "Servidores, cloud, virtualización y backups monitoreados para que tu operación nunca se detenga.", s1],
+  [Network, "Redes y Conectividad", "Redes LAN/WAN, Wi-Fi empresarial, VPN y cableado estructurado de alto rendimiento.", s2],
+  [Headset, "Soporte Técnico 24/7", "Mesa de ayuda, soporte remoto y presencial, y monitoreo proactivo los 365 días del año.", s3],
+  [ShieldCheck, "Ciberseguridad", "Antivirus corporativo, firewalls, respaldos automáticos y recuperación ante desastres.", s4],
+  [KeyRound, "Licenciamiento de Software", "Microsoft 365, Windows Server, Google Workspace y todas las licencias que tu empresa necesita.", s5],
+  [Cpu, "Venta de Hardware e Insumos", "Equipos, componentes y periféricos de las mejores marcas con asesoramiento personalizado.", s6],
+  [Code2, "Desarrollo Web y Software", "Sitios web, aplicaciones a medida, ERP y CRM para digitalizar tu empresa.", s7],
+  [PhoneCall, "Telefonía IP / VoIP", "Centrales virtuales, comunicaciones unificadas y telefonía en la nube.", s8],
+  [Cctv, "Cámaras de Seguridad / CCTV", "Videovigilancia IP con monitoreo remoto desde el celular, para comercios, industrias y hogares.", s9],
+] as const;
+
+const clientTypes = [
+  [Building2, "Pymes y comercios"],
+  [Factory, "Industrias y fábricas"],
+  [GraduationCap, "Colegios e instituciones"],
+  [Stethoscope, "Clínicas y consultorios"],
+  [Calculator, "Estudios contables"],
+  [Home, "Particulares"],
 ] as const;
 
 const benefits = [
@@ -55,10 +76,10 @@ const benefits = [
 ] as const;
 
 const steps = [
-  ["Diagnóstico", "Relevamos tu infraestructura y entendemos tus necesidades."],
-  ["Propuesta", "Diseñamos una solución a medida, con costos transparentes."],
-  ["Implementación", "Ejecutamos el proyecto con mínima interrupción operativa."],
-  ["Soporte continuo", "Acompañamos, monitoreamos y mejoramos día a día."],
+  ["Diagnóstico", "Escuchamos tus necesidades y evaluamos tu infraestructura."],
+  ["Propuesta", "Te presentamos una solución clara, con alcance y costos."],
+  ["Implementación", "Ejecutamos el proyecto con técnicos especializados."],
+  ["Soporte continuo", "Monitoreamos y evolucionamos tu infraestructura."],
 ] as const;
 
 function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
@@ -128,7 +149,8 @@ function Index() {
 
       {/* Hero */}
       <section id="inicio" className="relative overflow-hidden px-5 pb-20 pt-36 md:pt-48">
-        <div className="pointer-events-none absolute left-1/2 top-24 -z-0 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+        <img src={heroImg} alt="" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/80 to-background" />
         <div className="relative mx-auto max-w-5xl text-center">
           <p className="animate-fade-up text-sm font-semibold uppercase tracking-[0.2em] text-primary">Salomon Tech</p>
           <h1 className="animate-fade-up mt-5 text-5xl font-extrabold leading-[1.02] tracking-tight md:text-7xl lg:text-8xl" style={{ animationDelay: "100ms" }}>
@@ -157,16 +179,22 @@ function Index() {
           <Reveal className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Servicios</p>
             <h2 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">Todo lo que tu empresa necesita, en un solo lugar</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">Desde la infraestructura hasta el soporte diario. Nos ocupamos de la tecnología para que vos te ocupes de tu negocio.</p>
           </Reveal>
           <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map(([Icon, t, d], i) => (
+            {services.map(([Icon, t, d, img], i) => (
               <Reveal key={t} delay={(i % 3) * 80}>
-                <div className="group h-full rounded-3xl bg-surface p-8 transition duration-300 hover:-translate-y-1 hover:bg-background hover:shadow-2xl hover:shadow-foreground/5">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                <div className="group h-full rounded-3xl bg-surface p-4 pb-8 transition duration-300 hover:-translate-y-1 hover:bg-background hover:shadow-2xl hover:shadow-foreground/5">
+                  <div className="aspect-[16/10] overflow-hidden rounded-2xl">
+                    <img src={img} alt={t} loading="lazy" width={944} height={704} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+                  </div>
+                  <div className="px-4">
+                  <div className="-mt-6 relative flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg">
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="mt-6 text-xl font-semibold">{t}</h3>
                   <p className="mt-2 leading-relaxed text-muted-foreground">{d}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -197,34 +225,59 @@ function Index() {
       {/* Process */}
       <section className="px-5 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <Reveal className="text-center">
-            <h2 className="text-4xl font-bold tracking-tight md:text-6xl">Nuestro proceso, simple y transparente</h2>
-          </Reveal>
-          <div className="mt-16 grid gap-10 md:grid-cols-4 md:gap-6">
-            {steps.map(([t, d], i) => (
-              <Reveal key={t} delay={i * 100}>
-                <div className="border-t-2 border-primary pt-6">
-                  <span className="text-5xl font-extrabold text-primary/20">0{i + 1}</span>
-                  <h3 className="mt-3 text-xl font-semibold">{t}</h3>
-                  <p className="mt-2 text-muted-foreground">{d}</p>
-                </div>
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <img src={processImg} alt="Equipo de Salomon Tech planificando un proyecto" loading="lazy" width={912} height={1104} className="aspect-[4/5] w-full rounded-3xl object-cover" />
+            </Reveal>
+            <div>
+              <Reveal>
+                <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Nuestro proceso, simple y transparente</h2>
               </Reveal>
-            ))}
+              <div className="mt-12 space-y-8">
+                {steps.map(([t, d], i) => (
+                  <Reveal key={t} delay={i * 100}>
+                    <div className="flex gap-6 border-t border-border pt-6">
+                      <span className="text-4xl font-extrabold text-primary">0{i + 1}</span>
+                      <div>
+                        <h3 className="text-xl font-semibold">{t}</h3>
+                        <p className="mt-1 text-muted-foreground">{d}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Clients */}
-      <section className="bg-surface px-5 py-24 md:py-32">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Trabajamos con todo tipo de organizaciones</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-            Desde pymes y comercios hasta industrias, colegios, estudios profesionales y particulares.
-          </p>
-          <blockquote className="mt-16 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
-            “Más de <span className="text-primary">500 clientes</span> en todo el país confían en nosotros.”
-          </blockquote>
-        </Reveal>
+      <section className="relative overflow-hidden px-5 py-24 text-ink-foreground md:py-32">
+        <img src={clientsImg} alt="" loading="lazy" width={1920} height={1088} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-ink/75" />
+        <div className="relative mx-auto max-w-5xl text-center">
+          <Reveal>
+            <h2 className="text-4xl font-bold tracking-tight md:text-5xl">Trabajamos con todo tipo de organizaciones</h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-foreground/75">
+              Desde pymes y comercios hasta industrias, colegios, estudios profesionales y particulares.
+            </p>
+          </Reveal>
+          <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">
+            {clientTypes.map(([Icon, t], i) => (
+              <Reveal key={t} delay={(i % 3) * 80}>
+                <div className="flex h-full flex-col items-center gap-3 rounded-2xl border border-ink-foreground/15 bg-ink-foreground/10 p-6 backdrop-blur-md">
+                  <Icon className="h-7 w-7 text-primary" />
+                  <span className="font-medium">{t}</span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal>
+            <blockquote className="mt-20 text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
+              “Más de <span className="text-primary">500 clientes</span> en todo el país confían en nosotros.”
+            </blockquote>
+          </Reveal>
+        </div>
       </section>
 
       {/* Contact */}
@@ -260,7 +313,7 @@ function Index() {
               })}
             </Reveal>
             <Reveal className="lg:col-span-3" delay={100}>
-              <form onSubmit={onSubmit} className="grid gap-4 rounded-3xl border border-ink-foreground/10 bg-ink-foreground/5 p-6 sm:grid-cols-2 md:p-8">
+              <form onSubmit={onSubmit} className="grid gap-4 rounded-3xl border border-ink-foreground/10 bg-ink-foreground/5 p-6 backdrop-blur-xl sm:grid-cols-2 md:p-8">
                 <input required name="nombre" placeholder="Nombre" className={input} />
                 <input required type="email" name="email" placeholder="Email" className={input} />
                 <input name="telefono" placeholder="Teléfono" className={input} />
@@ -315,7 +368,7 @@ function Index() {
       </footer>
 
       <a href={WA} target="_blank" rel="noreferrer" aria-label="WhatsApp"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 transition hover:scale-110">
+        className="animate-wa-pulse fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-whatsapp-foreground shadow-xl transition hover:scale-110">
         <MessageCircle className="h-7 w-7" />
       </a>
     </div>
